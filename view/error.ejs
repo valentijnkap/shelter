@@ -5,18 +5,18 @@
 <link rel="shortcut icon" type=image/x-icon href=data:image/x-icon;,>
 <title>Error</title>
 <link rel=stylesheet href=/index.css>
-<main class="container">
+<main class=container>
   <% errors.forEach(function (err) { %>
     <% if (err.id > 200) { // actual http errors %>
       <article class="animal frame">
-        <figure class="frame-image">
+        <figure class=frame-image>
           <img src="https://http.cat/<%= err.id  %>" alt="<%= err.id %> <%= err.title %>">
         </figure>
       </article>
     <% } else { %>
       <article class="animal frame">
-        <figure class="frame-image">
-          <img src="https://http.cat/422" alt>
+        <figure class=frame-image>
+          <img src=https://http.cat/422 alt>
         </figure>
         <h1><%= err.title %></h1>
         <p><%= err.id %>: <%= err.detail %></p>
