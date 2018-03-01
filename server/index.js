@@ -8,7 +8,7 @@ module.exports = express()
   .set('view engine', 'ejs')
   .set('views', 'view')
   .use(express.static('static'))
-  // TODO: Serve the images in `db/images/:id` as `/images/:id`.
+  // TODO: Serve the images in `db/image` on `/image`.
   .get('/', all)
   /* TODO: Other HTTP methods. */
   // .post('/', add)
