@@ -26,6 +26,7 @@
         if (key == 'name' || key == 'description' || key == 'id') return
         if (key == 'primaryColor') key = 'primary color'
         if (key == 'secondaryColor') key = 'secondary color'
+        if (value === null || value === undefined) return
     %>
       <dt><%= key %></dt>
     <% if (value == true) { %>
