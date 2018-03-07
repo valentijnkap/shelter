@@ -8,11 +8,11 @@ module.exports = express()
   .set('view engine', 'ejs')
   .set('views', 'view')
   .use(express.static('static'))
-  // TODO: Serve the images in `db/image` on `/image`.
+  .use('/image', express.static('db/image'))
   .get('/', all)
   /* TODO: Other HTTP methods. */
   // .post('/', add)
-  // .get('/:id', get)
+  .get('/:id', get)
   // .put('/:id', set)
   // .patch('/:id', change)
   // .delete('/:id', remove)
@@ -29,4 +29,15 @@ function all(req, res) {
   //   json: () => res.json(result),
   //   html: () => res.render('list.ejs', Object.assign({}, result, helpers))
   // })
+}
+
+function get(req, res, next) {
+
+  var result = {
+    errors: [], 
+    data: db.all()// specify the right id for the data object
+  }
+
+  res.render('detail.ejs', Object.assign({}, result, helpers))
+
 }
