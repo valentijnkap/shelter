@@ -41,6 +41,7 @@ There are still some things I should fix before I complemented the assignment. B
 
 ## Recourses
 * [Static file serve express](https://expressjs.com/en/starter/static-files.html)
+* [Get url and post parameters](https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters)
 
 ## License
 
