@@ -33,11 +33,13 @@ function all(req, res) {
 
 function get(req, res, next) {
 
-  var result = {
-    errors: [], 
-    data: db.all()// specify the right id for the data object
-  }
+  // Store the id from the requested url and puts it a var
+  var id = req.param('id')
 
+  // Get data by ID from the database
+  var result = {errors: [], data: db.get(id)} 
+
+  //Render the resulting data in detail.ejs
   res.render('detail.ejs', Object.assign({}, result, helpers))
 
 }
