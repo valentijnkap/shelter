@@ -31,15 +31,29 @@ function all(req, res) {
   // })
 }
 
-function get(req, res, next) {
-
-  // Store the id from the requested url and puts it a var
+function get(req, res) {
   var id = req.param('id')
+  var has
 
-  // Get data by ID from the database
-  var result = {errors: [], data: db.get(id)} 
+  var result = {
+    errors: [], 
+    data: undefined
+  }
 
-  //Render the resulting data in detail.ejs
-  res.render('detail.ejs', Object.assign({}, result, helpers))
+  try {
+    has = db.has(id)
+  } catch (err) {
+    result.errors.push({id : 400, title : 'bad request', description : 'bad request'})
+    res.status(400).render('error.ejs', Object.assign({}, result, helpers))
+    return
+  }
+
+  if (has) {
+    result = {error: [], data: db.get(id)} 
+    res.render('detail.ejs', Object.assign({}, result, helpers))
+  } else {
+    result.errors.push({id : 404, title : 'Not Found', description : 'Sorry we can not help you!'})
+    res.status(404).render('error.ejs', Object.assign({}, result, helpers))
+  }
 
 }

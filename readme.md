@@ -3,7 +3,7 @@
 ![Banner][banner]
 
 ## The story of..
-This code is an example of a simple Express server. For an [assignment](https://github.com/cmda-be/course-17-18/tree/master/examples/express-server) I had to fix the example step by step. By doing this I would get familiar with Express.js. The code portraits a shelter websites where you can adopt pets. 
+This code is an example of a simple Express server. For an [assignment](https://github.com/cmda-be/course-17-18/tree/master/examples/express-server) I had to fix the example step by step. By doing this I would get familiar with Express.js. The code portraits a shelter website where you can adopt pets. 
 
 ## The steps I took
 
