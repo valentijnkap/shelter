@@ -21,14 +21,10 @@ module.exports = express()
 function all(req, res) {
   var result = {errors: [], data: db.all()}
 
-  /* Use the following to support just HTML:  */
-  res.render('list.ejs', Object.assign({}, result, helpers))
-
-  /* Support both a request for JSON and a request for HTML  */
-  // res.format({
-  //   json: () => res.json(result),
-  //   html: () => res.render('list.ejs', Object.assign({}, result, helpers))
-  // })
+  res.format({
+    json: () => res.json(result),
+    html: () => res.render('list.ejs', Object.assign({}, result, helpers))
+  })
 }
 
 function get(req, res) {
@@ -49,8 +45,12 @@ function get(req, res) {
   }
 
   if (has) {
-    result = {error: [], data: db.get(id)} 
-    res.render('detail.ejs', Object.assign({}, result, helpers))
+    result = {error: [], data: db.get(id)}
+
+    res.format({
+      json: () => res.json(result),
+      html: () => res.render('detail.ejs', Object.assign({}, result, helpers))
+    }) 
   } else {
     result.errors.push({id : 404, title : 'Not Found', description : 'Sorry we can not help you!'})
     res.status(404).render('error.ejs', Object.assign({}, result, helpers))
