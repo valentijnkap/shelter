@@ -10,12 +10,12 @@ module.exports = express()
   .use(express.static('static'))
   .use('/image', express.static('db/image'))
   .get('/', all)
-  /* TODO: Other HTTP methods. */
+   .get('/form', form)
   // .post('/', add)
   .get('/:id', get)
   // .put('/:id', set)
   // .patch('/:id', change)
-  // .delete('/:id', remove)
+  .delete('/:id', remove)
   .listen(1902)
 
 function all(req, res) {
@@ -57,3 +57,39 @@ function get(req, res) {
   }
 
 }
+
+function remove(req, res) {
+  var id = req.param('id')
+  var data = db.get(id)
+  var has
+
+  // Gives internal server error (500) instead of 400
+  try {
+    has = db.has(id)
+  } catch (err) {
+    res.status(400).json(id)
+    return
+  }
+
+  if (data) {
+    db.remove(id)
+    res.status(204).json(data)
+  } else {
+    res.status(404).json(id)
+  }
+
+}
+
+function form(req, res) {
+    var result = {
+      errors: [], 
+      data: undefined
+    }
+
+    res.format({
+      json: () => res.json(result),
+      html: () => res.render('form.ejs')
+    })
+}
+
+

@@ -1,5 +1,7 @@
 # Shelter
 
+(If you are looking arround, this readme is specially written for my [mentor](https://github.com/wooorm) who made this assignment. I write about my learning proces. Sorry!)
+
 ![Banner][banner]
 
 ## The story of..
@@ -31,6 +33,48 @@ function get(req, res, next) {
 
   //Render the resulting data in detail.ejs
   res.render('detail.ejs', Object.assign({}, result, helpers))
+
+}
+```
+
+## Deleting content
+My next step of the assignment was deleting content based on an id. I looked up the slides and found the first steps. Get the id by `reg.param('id')` and delete it with `db.remove(id)` and send ok response back with json.
+
+*I came up with this:*
+
+```javascript
+function remove(req, res) {
+	req.param('id')
+
+	db.remove(id)
+	res.status(204).json('status: oke')
+}
+
+```
+
+That didn't work for me. It gave me errors and I didn't completed the assignment. I should also respond with 404 and 400 when those cases happen. I didn't know how to solve this problem so I found an issue on slack from Deanne who tried to do the same thing. I followed her struggles and tried to understand whats missing. Then I solved the puzzle to do it my why and came up with this:
+
+```javascript
+function remove(req, res) {
+  var id = req.param('id')
+  var data = db.get(id)
+  var has
+
+  // Gives internal server error (500) instead of 400
+  try {
+    has = db.has(id)
+  } catch (err) {
+    res.status(400).json(id)
+    return
+  }
+
+  // This does work
+  if (data) {
+    db.remove(id)
+    res.status(204).json(data)
+  } else {
+    res.status(404).json(id)
+  }
 
 }
 ```
