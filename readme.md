@@ -1,6 +1,6 @@
 # Shelter
 
-(If you are looking arround, this readme is specially written for my [mentor](https://github.com/wooorm) who made this assignment. I write about my learning proces. Sorry!)
+> If you are looking arround, this readme is specially written for my [mentor](https://github.com/wooorm) who made this assignment. I write about my learning proces. Sorry!
 
 ![Banner][banner]
 
