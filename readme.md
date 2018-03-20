@@ -44,10 +44,10 @@ My next step of the assignment was deleting content based on an id. I looked up 
 
 ```javascript
 function remove(req, res) {
-	req.param('id')
+  req.param('id')
+  db.remove(id)
 
-	db.remove(id)
-	res.status(204).json('status: oke')
+  res.status(204).json('status: oke')
 }
 
 ```
