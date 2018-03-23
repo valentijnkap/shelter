@@ -6,5 +6,101 @@
 <title>Form</title>
 <link rel=stylesheet href=/index.css>
 <main class=container>
-  <h1>Hier komt de form</h1>
+  <h1>Sign up a new pet</h1>
+
+  <form action=/ mehod=post>
+
+    <label>Name 
+      <input type=text name=name required>
+    </label>
+
+    <label>Type of animal
+      <select name=animal required>
+        <option value=cat>Cat</option>
+        <option value=dog>Dog</option>
+        <option value=rabbit>Rabbit</option>
+      </select>
+    </label>
+
+    <label>Sex
+      <select name=sex required>
+        <option value=male>Male</option>
+        <option value=female>Female</option>
+      </select>
+    </label>
+
+    <label>Age
+      <input type=number name=age required>
+    </label>
+
+    <label>Weight (kg)
+      <input type=number name=weight>
+    </label>
+
+    <label>Rough size of animal
+      <select name=animal>
+        <option value=small>Small</option>
+        <option value=medium>Medium</option>
+        <option value=large>Large</option>
+      </select>
+    </label>
+
+    <label>Rough length of animal
+      <select name=length>
+        <option value=short>Short</option>
+        <option value=medium>Medium</option>
+        <option value=large>Large</option>
+      </select>
+    </label>
+
+    <label>Coat
+      <select name=coat>
+        <option value=short>Short</option>
+        <option value=medium>Medium</option>
+        <option value=large>Large</option>
+      </select>
+    </label>
+
+    <label>Vaccinated
+      <select name=vaccinated required>
+        <option value=true>Yes</option>
+        <option value=false>No</option>
+      </select>
+    </label>
+
+    <label>declawed
+      <select name=declawed>
+        <option value=true>Yes</option>
+        <option value=false>No</option>
+      </select>
+    </label>
+
+    <label>Primary color
+      <input type=text name=primarycolor required>
+    </label>
+
+    <label>Secundairy color
+      <input type=text name=secundaircolor required>
+    </label>
+
+    <label>Description
+      <textarea name=description></textarea>
+    </label>
+
+    <label>Location of placement
+      <select name=placement required>
+        <option value=brooklyn>Brooklyn Animal Care Center</option>
+        <option value=manhattan>Manhattan Animal Care Center</option>
+        <option value=statenisland>Staten Island Animal Care Center</option>
+      </select>
+    </label>
+
+    <label>Date of intake
+      <input type=date name=intake placeholder=YYYY-MM-DD required pattern=[0-9]{4}-[0-9]{2}-[0-9]{2}>
+    </label>
+
+    <input type=submit value=Send>
+    
+  </form>
+
 </main>

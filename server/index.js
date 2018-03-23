@@ -10,9 +10,9 @@ module.exports = express()
   .use(express.static('static'))
   .use('/image', express.static('db/image'))
   .get('/', all)
-   .get('/form', form)
-  // .post('/', add)
   .get('/:id', get)
+  .get('/form', form)
+  .post('/', add)
   // .put('/:id', set)
   // .patch('/:id', change)
   .delete('/:id', remove)
@@ -82,11 +82,14 @@ function remove(req, res) {
   } else {
     res.status(404).json(id)
   }
-
 }
 
 function form(req, res) {
   res.render('form.ejs')
+}
+
+function add(req, res) {
+
 }
 
 
